@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <h1>Hello, Welcome to my Weather Dashboard</h1>
+
+    <!-- Header -->
+    <header class="header">
+       <!-- header Component code -->
+        <div class="container_header">
+         <p>logo</p>
+         <p>searach box</p>
+         <p>light & dark Btn</p>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard">
+
+        <!-- City Overview -->
+         <section class="dashboard_section dashboard_city-overview">
+            <!-- city overview Component -->city-overview
+         </section>
+
+         <!-- Weekly Forecast -->
+         <section class="dashboard_section dashboard_weekly-forecast">
+            <!-- dashboard_weekly-forecast Component -->weekly-forecast
+         </section>
+
+         <!-- Interactive Globe -->
+         <section class="dashboard_section dashboard_globe-map">
+            <!-- dashboard_globe Component -->globe-map
+         </section>
+
+         <!-- Popular Cities -->
+         <section class="dashboard_section dashboard_popular-cities">
+            <!-- dashboard_popular-cities Component -->popular-cities
+         </section>
+         
+    </main>
+
+
+    <script type="module" src="./js/main.js"></script>
 </body>
 </html>
