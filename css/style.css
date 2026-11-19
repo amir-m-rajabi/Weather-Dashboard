@@ -34,6 +34,7 @@
 
     --color-text-primary: #202b36;
     --color-text-secondary: #718096;
+    --color-text-third: #ffffff;
 
     --color-border: #e2e8f0;
 
@@ -75,26 +76,32 @@
 
 /* Base  */
 
+body{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../assets/light-background_theme.jpg);
+    /* background-image: url(../assets/dark-background_theme.jpg); */
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    padding-top: var(--spacing-sm);
+}
+
 /* Header */
 .header{
     width: min(100% - 2rem , var(--container-width));
     height: var(--header-height);
     margin-inline: auto;
     margin-bottom: var(--spacing-sm);
-    background-color: var(--color-surface);
     border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--color-border);
-    margin-top: var(--spacing-sm);
-    /* border: 1px solid black; */
-
     text-transform: capitalize;
+    border: 1px solid var(--color-border);
+    /* background-color: var(--color-surface); */
 }
 
 /* Main Dashboard */
 .dashboard {
     width: min(100% - 2rem , var(--container-width));
-    height: min(100vh - 7rem, var(--main-height));
+    height: min(100vh - 6rem, var(--main-height));
     margin-inline: auto;
     display: grid;
 
@@ -102,7 +109,7 @@
 
     grid-template-areas:
         "city city city city city city city city city city forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast"
-        "popular popular popular popular popular popular popular popular globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe";
+        "popular popular popular popular popular popular popular globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe";
     gap: var(--dashboard-gap-md);
     /* border: 1px solid black; */
     /* padding-block: var(--spacing-xl); */
@@ -110,7 +117,7 @@
 
 /* Dashboard Section */
 .dashboard_section {
-    background-color: var(--color-surface);
+    /* background-color: var(--color-surface); */
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--color-border);
@@ -136,13 +143,4 @@
 
 .dashboard_popular-cities{
     grid-area: popular;
-}
-
-.container_header{
-    width: 100%;
-    padding: 0 2rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
