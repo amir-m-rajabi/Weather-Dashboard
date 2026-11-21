@@ -2,7 +2,7 @@ export function renderHeader(){
     return `
 
         <div class="container_header">
-        <p>logo</p>
+        <p class="logo">logo</p>
         <div class="serach_box">
           <button for="search_input" class="search_btn">
             <svg

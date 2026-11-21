@@ -1,0 +1,76 @@
+/* City Overview Box */
+.city_overview_box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-image: url(../assets/image/default-city.jpg);
+    background-size: contain;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-third);
+    box-shadow: var(--shadow-md);
+}
+
+.overview_cityImage_box{
+    width: 65%;
+    height: 100%;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+    background: linear-gradient(rgba(41, 40, 40, 0.727));
+}
+
+.overview_cityInformation_box{
+    width: 35%;
+    height: 100%;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background-color: rgba(26, 25, 25, 0.077);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.overview_cityName{
+    font-size: 4rem;
+    text-transform: capitalize;
+}
+
+.overview_cityTemperature_box{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.overview_NumberTemperature{
+    font-size: 3rem;
+}
+.overview_cityTime{
+    font-size: 1.5rem;
+}
+
+.cityInfomationDataBox{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: var(--spacing-2xl);
+    padding-left: var(--spacing-lg);
+    font-size: var(--font-size-lg);
+}
+.cityTitleInfomationBox{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.iconTitleInfomation{
+    width: 20px;
+    height: 20px;
+}
+.cityTitleInfomation{
+    text-transform: capitalize;
+}

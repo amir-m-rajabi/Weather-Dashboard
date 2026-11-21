@@ -79,8 +79,8 @@
 body{
     width: 100vw;
     height: 100vh;
-    background-image: url(../assets/light-background_theme.jpg);
-    /* background-image: url(../assets/dark-background_theme.jpg); */
+    /* background-image: url(../assets/image/light-background_theme.jpg); */
+    background-image: url(../assets/image/dark-background_theme.jpg);
     background-size: cover;
     backdrop-filter: blur(5px);
     padding-top: var(--spacing-sm);
@@ -108,8 +108,8 @@ body{
     grid-template-columns: repeat(24, 1fr);
 
     grid-template-areas:
-        "city city city city city city city city city city forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast"
-        "popular popular popular popular popular popular popular globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe globe";
+        "city city city city city city city city city city city city city globe globe globe globe globe globe globe globe globe globe globe"
+        "forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast forecast popular popular popular popular popular popular popular";
     gap: var(--dashboard-gap-md);
     /* border: 1px solid black; */
     /* padding-block: var(--spacing-xl); */
@@ -125,7 +125,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    text-transform: capitalize;
+    height: 310px;
 }
 
 /* Layout  */
