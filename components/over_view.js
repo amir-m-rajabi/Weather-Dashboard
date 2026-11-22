@@ -1,5 +1,5 @@
 
-export function renderOverView(){
+export function renderOverViewBox(){
     return `
 
         <div class="city_overview_box">
@@ -111,7 +111,7 @@ export function renderOverView(){
                 </svg>
                 <p class="cityTitleInfomation">pressure :</p>
               </div>
-              <p class="cityDataInformation">68%</p>
+              <p class="cityDataInformation">1018 hPa</p>
             </div>
           </div>
         </div>

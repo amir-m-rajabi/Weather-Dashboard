@@ -2,30 +2,33 @@
 
 .container_header{
     width: 100%;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
     height: 100%;
     display: flex;
     align-items: center;
+    /* justify-content: space-between; */
     justify-content: space-between;
+    /* border: 1px solid white; */
 }
 
 /* Logo */
 
 .logo{
     color: var(--color-text-third);
+    font-size: 1.5rem;
 }
 
 /* Search Box */
 
 .serach_box{
     backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.00);
+    background-color: rgba(0, 0, 0, 0.500);
     display: flex;
     align-items: center;
-    width: 400px;
+    width: 500px;
     height: 2.5rem;
     border-radius: var(--radius-xl);
-    border: 1px solid var(--color-border);
+    /* border: 1px solid var(--color-border); */
 }
 .search_btn{
     outline: none;
@@ -60,11 +63,11 @@
     text-transform: capitalize;
     color: var(--color-text-third);
     font-size: var(--font-size-sm);
-    letter-spacing: var(--spacing-sm);
+    letter-spacing: 4px;
 }
 #search_input::placeholder{
     text-transform: capitalize;
-    color: var(--color-text-third);
+    color: rgba(203, 197, 197, 0.575);
 }
 
 /* Theme Box */
@@ -83,7 +86,8 @@
     align-items: center;
     justify-content: space-around;
     /* background-color: rgb(231, 144, 51); */
-    background-color: darkblue;
+    background-color: rgba(0, 0, 0, 0.500);
+
 }
 .switch_theme_mood_btn:hover{
     cursor: pointer;
@@ -107,8 +111,9 @@ body:has(.switch_theme_mood_btn:hover) #icon_dark_mood{
 .dark_mood{
     height: 100%;
     width: 50%;
-    border-radius: 0 var(--radius-xl) var(--radius-xl) 0;
-    background-color: darkblue;
+    border-radius: 100%;
+    /* border-radius: 0 var(--radius-xl) var(--radius-xl) 0; */
+    background-color: rgba(0, 0, 0, 1);
     /* visibility: hidden; */
 }
 .dark_mood:hover{
