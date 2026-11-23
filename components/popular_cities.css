@@ -5,12 +5,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     /* background-color: #2878a8; */
 }
 .popular_citie_item{
     width: 100%;
-    height: 80px;
+    height: 70px;
     margin-inline: auto; 
     /* border: 1px solid white; */
     border-radius: var(--radius-md);
@@ -29,13 +29,13 @@
 }
 .popular_city_name{
     text-transform: capitalize;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .popular_city_time{
     font-size: 0.8rem;
 }
 .popular_city_icon{
-    width: 50px;
+    width: 45px;
 }
 .popular_city_temperature_box{
     display: flex;

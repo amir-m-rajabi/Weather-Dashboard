@@ -49,6 +49,22 @@ export function renderPopularCities(){
               <p class="popular_city_temperature_low">9°</p>
             </div>
           </div>
+
+          <div class="popular_citie_item">
+            <div class="popular_city_info">
+              <p class="popular_city_name">beijing</p>
+              <p class="popular_city_time">11:30 A.M</p>
+            </div>
+            <img
+              class="popular_city_icon"
+              src="./assets/icon/icon-sun.svg"
+              alt=""
+            />
+            <div class="popular_city_temperature_box">
+              <p class="popular_city_temperature_high">15°</p>
+              <p class="popular_city_temperature_low">9°</p>
+            </div>
+          </div>
         </div>
 
 
