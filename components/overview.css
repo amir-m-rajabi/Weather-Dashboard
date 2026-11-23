@@ -11,7 +11,7 @@
 }
 
 .overview_cityImage_box{
-    width: 65%;
+    width: 63%;
     height: 100%;
     background-size: cover;
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 .overview_cityInformation_box{
-    width: 35%;
+    width: 37%;
     height: 100%;
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     background-color: rgba(25, 25, 25, 0.500);

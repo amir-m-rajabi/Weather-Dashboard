@@ -1,5 +1,5 @@
 
-export function renderOverViewBox(){
+export function renderOverview(){
     return `
 
         <div class="city_overview_box">
@@ -13,7 +13,7 @@ export function renderOverViewBox(){
                 alt=""
               />
             </div>
-            <p class="overview_cityTime">11:45 A.M</p>
+            <p class="overview_cityTime">7:00 P.M</p>
           </div>
 
           <div class="overview_cityInformation_box">

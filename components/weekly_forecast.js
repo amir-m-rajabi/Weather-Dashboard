@@ -1,4 +1,4 @@
-export function renderWeeklyForecastBox(){
+export function renderWeeklyForecast(){
     return `
     
         <div class="weekly-forecast_box">

@@ -1,18 +1,24 @@
 import { renderHeader } from "../components/header.js";
 
-import { renderOverViewBox } from "../components/over_view.js";
+import { renderOverview } from "../components/overview.js";
 
-import { renderWeeklyForecastBox } from "../components/weekly_forecast.js";
+import { renderWeeklyForecast } from "../components/weekly_forecast.js";
+
+import { renderPopularCities } from "../components/popular_cities.js";
 
 const headerRoot = document.querySelector('.header')
 
-const overViewRoot = document.querySelector('.dashboard_city-overview')
+const overviewRoot = document.querySelector('.dashboard_city-overview')
 
 const weeklyForecastRoot = document.querySelector('.dashboard_weekly-forecast')
 
+const popularCitiesRoot = document.querySelector('.dashboard_popular-cities')
+
 headerRoot.innerHTML = renderHeader()
 
-overViewRoot.innerHTML = renderOverViewBox()
+overviewRoot.innerHTML = renderOverview()
 
-weeklyForecastRoot.innerHTML = renderWeeklyForecastBox()
+weeklyForecastRoot.innerHTML = renderWeeklyForecast()
+
+popularCitiesRoot.innerHTML = renderPopularCities()
 

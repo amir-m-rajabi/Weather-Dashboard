@@ -1,0 +1,53 @@
+/* popular-cities */
+
+.popular_cities_box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: #2878a8; */
+}
+.popular_citie_item{
+    width: 100%;
+    height: 80px;
+    margin-inline: auto; 
+    /* border: 1px solid white; */
+    border-radius: var(--radius-md);
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #151515;
+}
+.popular_city_info{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.popular_city_name{
+    text-transform: capitalize;
+    font-size: 1.5rem;
+}
+.popular_city_time{
+    font-size: 0.8rem;
+}
+.popular_city_icon{
+    width: 50px;
+}
+.popular_city_temperature_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.popular_city_temperature_high{
+    font-size: 1.3rem;
+    color: rgb(189, 32, 32);
+}
+.popular_city_temperature_low{
+    font-size: 0.9rem;
+    color: rgb(32, 142, 189);
+}
