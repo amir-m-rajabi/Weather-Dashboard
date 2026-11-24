@@ -37,17 +37,7 @@
 .popular_city_icon{
     width: 45px;
 }
-.popular_city_temperature_box{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-}
-.popular_city_temperature_high{
-    font-size: 1.3rem;
-    color: rgb(189, 32, 32);
-}
-.popular_city_temperature_low{
-    font-size: 0.9rem;
-    color: rgb(32, 142, 189);
+.popular_city_temperature{
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
 }

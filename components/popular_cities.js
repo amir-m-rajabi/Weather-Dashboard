@@ -1,6 +1,6 @@
 export function renderPopularCities(){
     return `
-    
+
         <div class="popular_cities_box">
           <div class="popular_citie_item">
             <div class="popular_city_info">
@@ -12,10 +12,7 @@ export function renderPopularCities(){
               src="./assets/icon/icon-sun.svg"
               alt=""
             />
-            <div class="popular_city_temperature_box">
-              <p class="popular_city_temperature_high">15°</p>
-              <p class="popular_city_temperature_low">9°</p>
-            </div>
+            <p class="popular_city_temperature">15°</p>
           </div>
 
           <div class="popular_citie_item">
@@ -28,10 +25,7 @@ export function renderPopularCities(){
               src="./assets/icon/icon-sun.svg"
               alt=""
             />
-            <div class="popular_city_temperature_box">
-              <p class="popular_city_temperature_high">15°</p>
-              <p class="popular_city_temperature_low">9°</p>
-            </div>
+            <p class="popular_city_temperature">15°</p>
           </div>
 
           <div class="popular_citie_item">
@@ -44,10 +38,7 @@ export function renderPopularCities(){
               src="./assets/icon/icon-sun.svg"
               alt=""
             />
-            <div class="popular_city_temperature_box">
-              <p class="popular_city_temperature_high">15°</p>
-              <p class="popular_city_temperature_low">9°</p>
-            </div>
+            <p class="popular_city_temperature">15°</p>
           </div>
 
           <div class="popular_citie_item">
@@ -60,13 +51,9 @@ export function renderPopularCities(){
               src="./assets/icon/icon-sun.svg"
               alt=""
             />
-            <div class="popular_city_temperature_box">
-              <p class="popular_city_temperature_high">15°</p>
-              <p class="popular_city_temperature_low">9°</p>
-            </div>
+            <p class="popular_city_temperature">15°</p>
           </div>
         </div>
-
 
     `
 }
