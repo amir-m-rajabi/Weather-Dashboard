@@ -148,15 +148,6 @@ const cityTimeZone = 'Asia/Tehran';
 const sunriseTime = 5 * 60 + 30;
 const sunsetTime = 18 * 60 + 55;
 
-export function initSunTimeline() {
-
-    // Initial update
-    updateSunTimeline();
-
-    // Update every second
-    setInterval(updateSunTimeline, 1000);
-
-}
 
 function updateSunTimeline() {
 
@@ -244,5 +235,15 @@ function updateSunTimeline() {
         );
 
     }
+
+}
+
+export function initSunTimeline() {
+
+    // Initial update
+    updateSunTimeline();
+
+    // Update every second
+    setInterval(updateSunTimeline, 1000);
 
 }

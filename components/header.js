@@ -1,7 +1,7 @@
 export function renderHeader(){
     return `
 
-        <div class="container_header">
+      <div class="container_header">
         <p class="logo">logo</p>
         <div class="serach_box">
           <button for="search_input" class="search_btn">
@@ -28,6 +28,10 @@ export function renderHeader(){
             id="search_input"
             placeholder="search city..."
           />
+
+          <div class="search_results">
+            
+          </div>
         </div>
         <div class="theme_box">
           <button class="switch_theme_mood_btn">

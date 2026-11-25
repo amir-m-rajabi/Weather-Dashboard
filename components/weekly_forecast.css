@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: space-around;
     background-color: rgba(25, 25, 25, 0.700);
-    backdrop-filter: blur(20px);
+    /* backdrop-filter: blur(20px); */
 }
 .weekly-forecast_day{
     text-transform: capitalize;
