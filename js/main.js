@@ -22,3 +22,4 @@ sunTimelineRoot.innerHTML = renderSunTimeline()
 initGlobe();
 initSunTimeline()
 
+

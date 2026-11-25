@@ -3,8 +3,16 @@
 .sun-timeline_box {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.816);
     border-radius: var(--radius-md);
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.50),
+            rgba(0, 0, 0, 0.50)
+        ),
+        url("../assets/image/sunset.jpg");
+
+    background-size: cover;
+    background-position: center;
 }
 
 .sun-chart {
@@ -23,9 +31,10 @@
 
 /* Filled Daylight Area */
 .sun-progress-area {
-    fill: yellow;
+    fill: #bac432ce;
     opacity: 0.25;
     stroke: none;
+    transition: fill 1s ease;
 }
 
 /* Background Sun Arc */
@@ -54,6 +63,23 @@
     fill: #f7b928;
     stroke: #ffffff;
     stroke-width: 3;
+}
+.sun-clock {
+    fill: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    text-anchor: middle;
+    dominant-baseline: middle;
+
+    /* Background */
+    paint-order: stroke;
+    stroke: rgba(20, 30, 40, 0.9);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+
+    /* Text Shadow */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
 }
 
 .sun-times {

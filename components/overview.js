@@ -13,7 +13,7 @@ export function renderOverview(){
                 alt=""
               />
             </div>
-            <p class="overview_cityTime">7:00 P.M</p>
+            <p class="overview_weatherCondition">Sunny</p>
           </div>
 
           <div class="overview_cityInformation_box">
