@@ -42,8 +42,17 @@
     border-radius: var(--radius-md);
     border-bottom: 3px solid white;
 }
+.weekly-forecast_date{
+    font-size: 0.8rem;
+}
 .weekly-forecast_icon{
     width: 60px;
+}
+.weekly-forecast_temperatures{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
 }
 .weekly-forecast_temperature_high{
     color: rgb(189, 32, 32);
@@ -52,4 +61,16 @@
 .weekly-forecast_temperature_low{
     color: rgb(32, 142, 189);
     font-size: 1.1rem;
+}
+
+.weekly-forecast_item.is-today {
+    background-color: slateblue;
+    transform: translateY(-4px);
+}
+
+.weekly-forecast_item.is-today .weekly-forecast_day,
+.weekly-forecast_item.is-today .weekly-forecast_date,
+.weekly-forecast_item.is-today .weekly-forecast_temperature_high,
+.weekly-forecast_item.is-today .weekly-forecast_temperature_low {
+    color: #fff;
 }

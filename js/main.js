@@ -6,6 +6,8 @@ import { renderGlobe, initGlobe } from "../components/globe_map.js";
 import { renderSunTimeline, initSunTimeline } from "../components/sun_timeline.js";
 import { searchCities } from "./services/geocodingService.js";
 import { appState } from "./state/appState.js"
+import { getWeather } from "./services/weatherService.js";
+
 
 const headerRoot = document.querySelector('.header');
 const overviewRoot = document.querySelector('.dashboard_city-overview');
@@ -16,7 +18,6 @@ const sunTimelineRoot = document.querySelector('.dashboard_sun-timeline')
 
 headerRoot.innerHTML = renderHeader()
 overviewRoot.innerHTML = renderOverview()
-weeklyForecastRoot.innerHTML = renderWeeklyForecast()
 popularCitiesRoot.innerHTML = renderPopularCities()
 globeRoot.innerHTML = renderGlobe();
 sunTimelineRoot.innerHTML = renderSunTimeline()
@@ -85,6 +86,8 @@ function getUniqueCities(cities) {
 function selectCity(city) {
     appState.selectedCity = city;
 
+    loadWeather(city)
+
     console.log("Selected city:", appState.selectedCity);
     searchInput.value = "";
 }
@@ -98,6 +101,28 @@ function renderCityOptions(cities) {
     `).join("");
 
     searchResults.style.display = "flex";
+}
+
+async function loadWeather(city) {
+
+    try {
+        const weatherData = await getWeather(
+            city.latitude,
+            city.longitude,
+            city.timezone
+        );
+
+        appState.weatherData = weatherData
+
+        weeklyForecastRoot.innerHTML = renderWeeklyForecast(
+            appState.weatherData
+        );
+
+        console.log("Weather Data:", weatherData);
+
+    } catch (error) {
+        console.error("Weather request failed:", error);
+    }
 }
 
 searchResults.addEventListener("click", event => {
@@ -123,3 +148,5 @@ searchInput.addEventListener("keydown", event => {
 });
 
 searchButton.addEventListener("click", handleCitySearch);
+
+loadWeather(appState.selectedCity)
