@@ -1,13 +1,51 @@
-import { renderHeader } from "../components/header.js";
-import { renderOverview } from "../components/overview.js";
-import { renderWeeklyForecast } from "../components/weekly_forecast.js";
-import { renderPopularCities } from "../components/popular_cities.js";
-import { renderGlobe, initGlobe } from "../components/globe_map.js";
-import { renderSunTimeline, initSunTimeline } from "../components/sun_timeline.js";
+import { renderHeader } from "../components/header/header.js";
+import { renderOverview } from "../components/overview/overview.js";
+import { renderWeeklyForecast } from "../components/weekly_forecast/weekly_forecast.js";
+import { renderPopularCities } from "../components/popular_cities/popular_cities.js";
+import { renderGlobe, initGlobe } from "../components/globe_map/globe_map.js";
+import { renderSunTimeline, initSunTimeline } from "../components/sun_timeline/sun_timeline.js";
 import { searchCities } from "./services/geocodingService.js";
-import { appState } from "./state/appState.js"
-import { getWeather } from "./services/weatherService.js";
+import { appState } from "./state/appState.js";
+import { getWeather, getCurrentWeather } from "../js/services/weatherService.js";
+import { getWeatherIcon } from "../js/utils/weatherUtils.js";
 
+
+let currentCities = [];
+
+const popularCities = [
+    {
+        id: "tokyo",
+        name: "Tokyo",
+        country: "Japan",
+        latitude: 35.6762,
+        longitude: 139.6503,
+        timezone: "Asia/Tokyo"
+    },
+    {
+        id: "new-york",
+        name: "New York",
+        country: "United States",
+        latitude: 40.7128,
+        longitude: -74.0060,
+        timezone: "America/New_York"
+    },
+    {
+        id: "london",
+        name: "London",
+        country: "United Kingdom",
+        latitude: 51.5072,
+        longitude: -0.1276,
+        timezone: "Europe/London"
+    },
+    {
+        id: "beijing",
+        name: "Beijing",
+        country: "China",
+        latitude: 39.9042,
+        longitude: 116.4074,
+        timezone: "Asia/Shanghai"
+    }
+];
 
 const headerRoot = document.querySelector('.header');
 const overviewRoot = document.querySelector('.dashboard_city-overview');
@@ -18,19 +56,18 @@ const sunTimelineRoot = document.querySelector('.dashboard_sun-timeline')
 
 headerRoot.innerHTML = renderHeader()
 overviewRoot.innerHTML = renderOverview()
-popularCitiesRoot.innerHTML = renderPopularCities()
+popularCitiesRoot.innerHTML = renderPopularCities(popularCities)
 globeRoot.innerHTML = renderGlobe();
 sunTimelineRoot.innerHTML = renderSunTimeline()
 
-
 initGlobe();
-initSunTimeline()
+initSunTimeline();
+initPopularCitiesClock();
 
 const searchInput = document.querySelector("#search_input");
 const searchButton = document.querySelector(".search_btn");
 const searchResults = document.querySelector('.search_results')
 
-let currentCities = [];
 
 async function handleCitySearch() {
     const query = searchInput.value.trim();
@@ -125,6 +162,69 @@ async function loadWeather(city) {
     }
 }
 
+function updatePopularCitiesTime() {
+    const cityCards = popularCitiesRoot.querySelectorAll(".popular_citie_item");
+
+    cityCards.forEach(card => {
+        const cityId = card.dataset.cityId;
+
+        const city = popularCities.find(city => city.id === cityId);
+
+        if (!city) return;
+
+        const localTime = new Intl.DateTimeFormat("en-GB", {
+            timeZone: city.timezone,
+            hour: "2-digit",
+            minute: "2-digit",
+            hourCycle: "h23"
+        }).format(new Date());
+
+        card.querySelector(".popular_city_time").textContent = localTime;
+    });
+}
+
+function initPopularCitiesClock() {
+    updatePopularCitiesTime();
+
+    setInterval(updatePopularCitiesTime, 1000);
+}
+
+async function loadPopularCitiesWeather() {
+
+    try {
+
+        const weatherResults = await Promise.all(
+            popularCities.map(city => {
+                return getCurrentWeather(
+                    city.latitude,
+                    city.longitude,
+                    city.timezone
+                );
+            })
+        );
+
+        popularCities.forEach((city, index) => {
+
+            const card = popularCitiesRoot.querySelector(
+                `[data-city-id="${city.id}"]`
+            );
+
+            const temperature = weatherResults[index].current.temperature_2m;
+            const weatherCode = weatherResults[index].current.weather_code;
+
+            card.querySelector(".popular_city_temperature").textContent =
+                `${Math.round(temperature)}°`;
+
+            card.querySelector(".popular_city_icon").src =
+                `./assets/icon/weather/${getWeatherIcon(weatherCode)}`;
+        
+            });
+
+    } catch (error) {
+        console.error("Popular cities weather request failed:", error);
+    }
+}
+
 searchResults.addEventListener("click", event => {
 
     const selectedOption = event.target.closest(".search_result");
@@ -149,4 +249,23 @@ searchInput.addEventListener("keydown", event => {
 
 searchButton.addEventListener("click", handleCitySearch);
 
-loadWeather(appState.selectedCity)
+popularCitiesRoot.addEventListener("click", event => {
+
+    const selectedCard = event.target.closest(".popular_citie_item");
+
+    if (!selectedCard) return;
+
+    const cityId = selectedCard.dataset.cityId;
+
+    const selectedCity = popularCities.find(city => 
+        city.id === cityId
+    );
+
+    if (!selectedCity) return;
+
+    selectCity(selectedCity);
+
+});
+
+loadWeather(appState.selectedCity);
+loadPopularCitiesWeather();

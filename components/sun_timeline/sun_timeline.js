@@ -1,3 +1,6 @@
+import { appState } from "../../js/state/appState.js";
+
+
 export function renderSunTimeline(){
     return `
     
@@ -113,7 +116,15 @@ function formatTime(totalMinutes) {
     return `${String(displayHours).padStart(2, '0')}:${String(minutes).padStart(2, '0')} ${period}`;
 }
 
+function timeToMinutes(time) {
 
+    const timePart = time.split('T')[1];
+
+    const [hours, minutes] = timePart.split(':').map(Number);
+
+    return hours * 60 + minutes;
+
+}
 function getCurrentCityTime(timeZone) {
 
     const timeParts = new Intl.DateTimeFormat('en-GB', {
@@ -141,15 +152,32 @@ function getCurrentCityTime(timeZone) {
     return hours * 60 + minutes;
 }
 
-// Temporary time configuration
-
-const cityTimeZone = 'Asia/Tehran';
-
-const sunriseTime = 5 * 60 + 30;
-const sunsetTime = 18 * 60 + 55;
-
 
 function updateSunTimeline() {
+
+    // Get current application data
+    const { selectedCity, weatherData } = appState;
+
+    // Wait until weather data is available
+    if (!weatherData) return;
+
+    // Get city timezone
+    const timeZone = selectedCity.timezone;
+
+    // Get today's sunrise and sunset
+    const today = weatherData.current.time.slice(0, 10);
+
+    const todayIndex = weatherData.daily.time.indexOf(today);
+
+    if (todayIndex === -1) return;
+
+    const sunriseTime = timeToMinutes(
+        weatherData.daily.sunrise[todayIndex]
+    );
+
+    const sunsetTime = timeToMinutes(
+        weatherData.daily.sunset[todayIndex]
+    );
 
     // Select SVG elements
     const sunTrack = document.querySelector('.sun-track');
@@ -163,7 +191,7 @@ function updateSunTimeline() {
 
 
     // Get current city time
-    const currentTime = getCurrentCityTime(cityTimeZone);
+    const currentTime = getCurrentCityTime(timeZone);
 
 
     // Display sunrise and sunset times

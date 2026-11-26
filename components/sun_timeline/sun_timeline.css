@@ -9,7 +9,7 @@
             rgba(0, 0, 0, 0.50),
             rgba(0, 0, 0, 0.50)
         ),
-        url("../assets/image/sunset.jpg");
+        url("../../assets/image/sunset.jpg");
 
     background-size: cover;
     background-position: center;

@@ -44,3 +44,23 @@ export async function getWeather(latitude, longitude,timezone) {
 
     return data;
 }
+
+export async function getCurrentWeather(latitude, longitude, timezone) {
+
+    const params = new URLSearchParams({
+        latitude: latitude,
+        longitude: longitude,
+        current: "temperature_2m,weather_code",
+        timezone: timezone
+    });
+
+    const response = await fetch(`${WEATHER_BASE_URL}?${params}`);
+
+    if (!response.ok) {
+        throw new Error(`Weather request failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+}

@@ -19,6 +19,12 @@
     align-items: center;
     justify-content: space-around;
     background-color: #151515;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+.popular_citie_item:hover{
+    background-color: #0c0c0c;
+    transform: scale(1.02);
 }
 .popular_city_info{
     width: 35%;
