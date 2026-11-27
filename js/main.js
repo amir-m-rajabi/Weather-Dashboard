@@ -2,13 +2,12 @@ import { renderHeader } from "../components/header/header.js";
 import { renderOverview } from "../components/overview/overview.js";
 import { renderWeeklyForecast } from "../components/weekly_forecast/weekly_forecast.js";
 import { renderPopularCities } from "../components/popular_cities/popular_cities.js";
-import { renderGlobe, initGlobe } from "../components/globe_map/globe_map.js";
+import { renderGlobe, initGlobe, updateGlobeLocation } from "../components/globe_map/globe_map.js";
 import { renderSunTimeline, initSunTimeline } from "../components/sun_timeline/sun_timeline.js";
 import { searchCities } from "./services/geocodingService.js";
 import { appState } from "./state/appState.js";
 import { getWeather, getCurrentWeather } from "../js/services/weatherService.js";
 import { getWeatherIcon } from "../js/utils/weatherUtils.js";
-
 
 let currentCities = [];
 
@@ -60,9 +59,13 @@ popularCitiesRoot.innerHTML = renderPopularCities(popularCities)
 globeRoot.innerHTML = renderGlobe();
 sunTimelineRoot.innerHTML = renderSunTimeline()
 
-initGlobe();
+initGlobe(selectCity);
 initSunTimeline();
 initPopularCitiesClock();
+updateGlobeLocation(
+    appState.selectedCity.latitude,
+    appState.selectedCity.longitude
+);
 
 const searchInput = document.querySelector("#search_input");
 const searchButton = document.querySelector(".search_btn");
@@ -123,9 +126,11 @@ function getUniqueCities(cities) {
 function selectCity(city) {
     appState.selectedCity = city;
 
+    updateGlobeLocation(city.latitude, city.longitude);
+
     loadWeather(city)
 
-    console.log("Selected city:", appState.selectedCity);
+    // console.log("Selected city:", appState.selectedCity);
     searchInput.value = "";
 }
 
@@ -155,7 +160,7 @@ async function loadWeather(city) {
             appState.weatherData
         );
 
-        console.log("Weather Data:", weatherData);
+        // console.log("Weather Data:", weatherData);
 
     } catch (error) {
         console.error("Weather request failed:", error);

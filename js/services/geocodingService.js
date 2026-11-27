@@ -1,5 +1,6 @@
 const GEOCODING_BASE_URL = "https://geocoding-api.open-meteo.com/v1/search";
 
+const REVERSE_GEOCODING_BASE_URL = "https://nominatim.openstreetmap.org/reverse";
 
 export async function searchCities(query, language = "en") {
 
@@ -61,4 +62,53 @@ export async function searchCities(query, language = "en") {
 
     return cities;
 
+}
+
+export async function reverseGeocode(latitude, longitude, language = "en") {
+
+    const params = new URLSearchParams({
+        lat: latitude,
+        lon: longitude,
+        format: "jsonv2",
+        addressdetails: 1,
+        "accept-language": language
+    });
+
+    const response = await fetch(
+        `${REVERSE_GEOCODING_BASE_URL}?${params}`
+    );
+
+    if (!response.ok) {
+        throw new Error(`Reverse geocoding failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.address) {
+        return null;
+    }
+
+    const address = data.address;
+
+    const cityName =
+        address.city ||
+        address.town ||
+        address.village ||
+        address.municipality ||
+        address.hamlet;
+
+    if (!cityName) {
+        return null;
+    }
+
+    return {
+        id: `${data.osm_type}-${data.osm_id}`,
+        name: cityName,
+        country: address.country,
+        countryCode: address.country_code,
+        latitude: Number(latitude),
+        longitude: Number(longitude),
+        timezone: null,
+        admin1: address.state
+    };
 }
